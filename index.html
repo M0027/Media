@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cálculo da Média Trimestral</title>
+  <style>
+  
+  *{ box-sizing:  border-box;
+    margin:  0;
+    padding: 0;
+    overflow: hidden;
+  }
+  .geral{
+    width:  100vw;
+    height:  100vh;
+    padding: 10px;
+  }
+    body{
+      font-family: Arial, sans-serif;
+      display: flex;
+      max-width:100dvh;
+      flex-direction:column;
+      text-justify:  center;
+      align-items:  center;
+      background-color: #fff;
+      border: solid;
+      
+    }
+    h2 {
+      color: #333;
+      text-align: center;
+      letter-spacing: 1px;
+      margin: 5dvh 0;
+    }
+    .conteiner{
+      display: flex;
+      width:100dvw;
+      padding: 10px;
+      justify-content: space-around;
+      background: rgba(250, 250, 250, 0.6)
+      
+    }
+    .caixa{
+      
+      text-align: center;
+      padding: 5px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color:#555;
+    }
+    input {
+      padding: 5px;
+      font-size: 18px;
+      width: 100px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      text-align:center;
+      
+      &:focus{
+        transform:scale(1.07);
+        transition: easy .9s;
+        outline:none;
+        border:3px solid gold;
+}
+      
+    }
+    .button1 {
+      padding: 10px 20px;
+      width:80vw;
+      background: rgba(250, 250, 250, 0.9);
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 8px;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    #sobre{
+      padding: 10px 20px;
+      color:orange;
+      background:rgba(250,250,250,0.6);
+      font-size: 18px;
+      font-weight:  bold;
+      border-radius: 8px;
+      border:  none;
+       transform: translateX(-50%);
+      margin-left: 50vw;
+      margin-top: 15px;
+    }
+    #resultado {
+      margin: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+     
+    }
+    .footer{
+      position:  fixed;
+      bottom:0dvh;
+      left: 0dvw;
+      width: 100vw;
+      padding: 10px;
+      height:8vh;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding:10px;
+      display: flex;
+      justify-content: space-around;
+      align-items:  center;
+      
+      div a{
+      color: orange;
+      text-decoration:none;
+    }
+    div{
+      color: #333;
+    }
+  div span{
+    color: blue;
+  }
+      
+
+    
+      background: rgba(250,250,250,1);
+    }
+    
+    .modal{
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      flex-direction: column ;
+      
+      
+      div{
+      margin-top: 10dvh;
+      width: 90%;
+      height: 50dvh;
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      margin-left:  50%;
+      transform:  translateX(-50%);
+      letter-spacing:1px;
+      font-size: 18px;
+      Color: #333;
+      text-align:center;
+
+    }
+    
+    span{
+      color: #fff;
+      font-size:  22px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    }
+  </style>
+</head>
+<body>
+  <div class=" geral">
+  <h2>Cálculo da Média Trimestral</h2>
+  <button id="sobre" onclick="abrirmodal()">Detalhes</button>
+  <p id="resultado"></p>
+  
+<div class="conteiner">
+  <div class="caixa">
+  <label for="macs">MACS</label>
+  <input type="number" placeholder=" Ex: 15.75" id="macs" />
+  </div>
+<div class="caixa">
+  <label for="at">AT</label>
+  <input type="number" id="at" placeholder=" Ex: 15.75" />
+</div>
+</div>
+  <br>
+  <button class="button1" onclick="calcularMT()">Calcular</button>
+  <div class="footer">
+    <div>
+      <a class="reportar" href="https://wa.me/258833072296?text=Tenho%20a%20seguinte%20sugestao%20para%20o%20Sistema %20Media:%20%3A" target="_blank">
+  Sugestões..
+</a>
+    </div>
+    <div>
+      copyright 2025 <span> Mauro Assis</span>
+    </div>
+  </div>
+  
+  <div class="modal">
+    <div>
+      <h2>Sobre o sistema</h2>
+      
+      <p>
+        Calcule a Media trimestral usando a Fórmula [(2*MACS + AT) / 3] <br><hr><br>
+        <strong>MACS:</strong> E a média das ACS; <br>
+<strong>AT:</strong> E a prova trimestral;
+<br> <strong>MT: </strong>E a média trimestral arredondada
+      </p>
+    </div>
+    
+    <span class="fechar" onclick="fecharMidal()">Fechar</span>
+    
+  </div>
+  
+
+  
+
+  <script>
+
+ function fecharMidal(){
+   
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'none';
+  }
+  
+  function abrirmodal(){
+    const modal= document.querySelector('.modal');
+    modal.style.display = 'flex';
+  }
+    function calcularMT() {
+      const macs = parseFloat(document.getElementById("macs").value);
+      const at = parseFloat(document.getElementById("at").value);
+
+      if (isNaN(macs) || isNaN(at)) {
+        alert("Por favor, insira valores válidos para MACS e AT.");
+        return;
+      }
+
+      let mt = (2 * macs + at) / 3;
+      let mtArredondado = Math.round(mt); // Pode usar Math.floor() ou Math.ceil() para arredondar por defeito ou excesso
+
+      const resultado = document.getElementById("resultado");
+      resultado.textContent = `MT: ${mtArredondado}`;
+      resultado.style.color = mtArredondado > 10 ? "green" : "red";
+
+      // Limpar campos
+      document.getElementById("macs").value = "";
+      document.getElementById("at").value = "";
+    }
+  </script>
+  </div>
+</body>
+</html>
